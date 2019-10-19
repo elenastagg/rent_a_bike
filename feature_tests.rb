@@ -26,7 +26,7 @@ require './lib/docking_station'
 
 # docking_station.release_scooter
 
-# puts 'An error should have been thrown and we shouldn't see this message'
+# puts 'An error should have been thrown and we shouldn\'t see this message'
 
 # ---------
 # Releases a scooter when some are docked
@@ -44,3 +44,18 @@ require './lib/docking_station'
 
 # puts 'Station contains no scooters'
 # p docking_station.scooters.length.zero?
+
+# ---------
+# Can't dock scooter at full station - has capacity of one
+# ---------
+
+# docking_station = DockingStation.new
+
+# docking_station.dock(Scooter.new)
+# docking_station.dock(Scooter.new)
+
+# puts 'An error should have been thrown and we shouldn\'t see this message'
+
+# ---------
+#
+# ---------

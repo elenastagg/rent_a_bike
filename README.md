@@ -35,5 +35,11 @@ I want to see a scooter that has been docked
 ```
 As a member of the public,
 So that I am not confused and charged unnecessarily,
-I'd like docking stations not to release bikes when there are none available.
+I'd like docking stations not to release scooters when there are none available.
+```
+
+```
+As a maintainer of the system,
+So that I can control the distribution of scooters,
+I'd like docking stations not to accept more scooters than their capacity.
 ```

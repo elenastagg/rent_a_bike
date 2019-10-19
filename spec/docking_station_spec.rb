@@ -16,6 +16,7 @@ describe DockingStation do
     it 'releases working scooters' do
       scooter = Scooter.new
       subject.dock(scooter)
+
       released_scooter = subject.release_scooter
 
       expect(released_scooter).to equal(scooter)
@@ -26,10 +27,18 @@ describe DockingStation do
 
   describe '#dock' do
     it { is_expected.to respond_to(:dock).with(1).argument }
+
     it 'docks a scooter and adds it to the scooters array' do
       scooter = Scooter.new
       subject.dock(scooter)
       expect(subject.scooters).to match_array([scooter])
+    end
+
+    it 'throws an error when docking at a full station' do
+      subject.dock(Scooter.new)
+      expect { subject.dock(Scooter.new) }.to raise_error(
+        'The docking station is full.'
+      )
     end
   end
 
