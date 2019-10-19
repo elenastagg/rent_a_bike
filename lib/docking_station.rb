@@ -29,6 +29,6 @@ class DockingStation
   end
 
   def full?
-    @scooters.length == 1
+    @scooters.length == 20
   end
 end

@@ -46,12 +46,15 @@ require './lib/docking_station'
 # p docking_station.scooters.length.zero?
 
 # ---------
-# Can't dock scooter at full station - has capacity of one
+# Can't dock scooter at full station - has capacity of twenty
 # ---------
 
 # docking_station = DockingStation.new
 
-# docking_station.dock(Scooter.new)
+# 20.times { docking_station.dock(Scooter.new) }
+
+# puts 'Docked 20 scooters'
+
 # docking_station.dock(Scooter.new)
 
 # puts 'An error should have been thrown and we shouldn\'t see this message'

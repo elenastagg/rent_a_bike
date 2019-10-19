@@ -43,3 +43,9 @@ As a maintainer of the system,
 So that I can control the distribution of scooters,
 I'd like docking stations not to accept more scooters than their capacity.
 ```
+
+```
+As a system maintainer,
+So that I can plan the distribution of scooters,
+I want a docking station to have a default capacity of 20 scooters.
+```
