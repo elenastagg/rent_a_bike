@@ -46,10 +46,12 @@ require './lib/docking_station'
 # p docking_station.scooters.length.zero?
 
 # ---------
-# Can't dock scooter at full station - has capacity of twenty
+# Can't dock scooter at full station - has default capacity of twenty
 # ---------
 
 # docking_station = DockingStation.new
+
+# p docking_station.capacity == 20
 
 # 20.times { docking_station.dock(Scooter.new) }
 
@@ -60,5 +62,17 @@ require './lib/docking_station'
 # puts 'An error should have been thrown and we shouldn\'t see this message'
 
 # ---------
-#
+# Allows user to set a capacity
 # ---------
+
+docking_station = DockingStation.new(30)
+
+p docking_station.capacity == 30
+
+30.times { docking_station.dock(Scooter.new) }
+
+puts 'Docked 30 scooters'
+
+docking_station.dock(Scooter.new)
+
+puts 'An error should have been thrown and we shouldn\'t see this message'

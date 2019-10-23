@@ -4,6 +4,17 @@ require 'docking_station'
 require 'scooter'
 
 describe DockingStation do
+  describe '#initilize' do
+    it 'has a default capacity' do
+      expect(subject.capacity).to equal DockingStation::DEFAULT_CAPACITY
+    end
+
+    it 'enables the user to set capacity' do
+      docking_station = DockingStation.new(30)
+      expect(docking_station.capacity).to equal(30)
+    end
+  end
+
   describe '#release_scooter' do
     it { is_expected.to respond_to :release_scooter }
 
@@ -37,7 +48,7 @@ describe DockingStation do
     end
 
     it 'throws an error when docking at a full station' do
-      DockingStation::CAPACITY.times { subject.dock(Scooter.new) }
+      subject.capacity.times { subject.dock(Scooter.new) }
 
       expect { subject.dock(Scooter.new) }.to raise_error(
         'The docking station is full.'
