@@ -16,8 +16,9 @@ class DockingStation
 
   def release_scooter
     raise 'There are no scooters available.' if empty?
+    raise 'There are no working scooters available' if @scooters.none?(&:working?)
 
-    @scooters.shift
+    @scooters.delete_at(@scooters.index(&:working?))
   end
 
   def dock(scooter)

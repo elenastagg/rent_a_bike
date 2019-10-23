@@ -26,13 +26,24 @@ describe DockingStation do
 
     it 'releases working scooters' do
       scooter = Scooter.new
+      scooter2 = Scooter.new
+      scooter.report_broken
       subject.dock(scooter)
+      subject.dock(scooter2)
 
       released_scooter = subject.release_scooter
 
-      expect(released_scooter).to equal(scooter)
-      expect(subject.scooters.length).to be_zero
+      expect(released_scooter).to equal(scooter2)
+      expect(subject.scooters.length).to equal(1)
       expect(released_scooter).to be_working
+    end
+
+    it 'throws an error when trying to relase a broken scooter' do
+      scooter = Scooter.new
+      scooter.report_broken
+      subject.dock(scooter)
+
+      expect { subject.release_scooter }.to raise_error('There are no working scooters available')
     end
   end
 

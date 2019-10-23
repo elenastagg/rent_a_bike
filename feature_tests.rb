@@ -65,14 +65,41 @@ require './lib/docking_station'
 # Allows user to set a capacity
 # ---------
 
-docking_station = DockingStation.new(30)
+# docking_station = DockingStation.new(30)
 
-p docking_station.capacity == 30
+# p docking_station.capacity == 30
 
-30.times { docking_station.dock(Scooter.new) }
+# 30.times { docking_station.dock(Scooter.new) }
 
-puts 'Docked 30 scooters'
+# puts 'Docked 30 scooters'
 
-docking_station.dock(Scooter.new)
+# docking_station.dock(Scooter.new)
 
-puts 'An error should have been thrown and we shouldn\'t see this message'
+# puts 'An error should have been thrown and we shouldn\'t see this message'
+
+# ---------
+# Allows member of the public to report a broken bike on returning
+# ---------
+
+docking_station = DockingStation.new
+scooter1 = Scooter.new
+scooter2 = Scooter.new
+
+scooter1.report_broken
+puts 'scooter one is working? - false'
+p scooter1.working?
+docking_station.dock(scooter1)
+docking_station.dock(scooter2)
+
+released = docking_station.release_scooter
+
+puts 'Release a working bike'
+p released.working?
+
+docking_station.release_scooter
+
+puts 'An error should have been thrown'
+
+# ---------
+
+# ---------
