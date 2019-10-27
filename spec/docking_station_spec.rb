@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'docking_station'
-require 'scooter'
+# require 'scooter'
 
 describe DockingStation do
   describe '#initilize' do
@@ -25,22 +25,21 @@ describe DockingStation do
     end
 
     it 'releases working scooters' do
-      scooter = Scooter.new
-      scooter2 = Scooter.new
-      scooter.report_broken
-      subject.dock(scooter)
+      scooter1 = double(:scooter, working?: false)
+
+      scooter2 = double(:scooter, working?: true)
+
+      subject.dock(scooter1)
       subject.dock(scooter2)
 
       released_scooter = subject.release_scooter
 
-      expect(released_scooter).to equal(scooter2)
+      expect(released_scooter).to be(scooter2)
       expect(subject.scooters.length).to equal(1)
-      expect(released_scooter).to be_working
     end
 
     it 'throws an error when trying to relase a broken scooter' do
-      scooter = Scooter.new
-      scooter.report_broken
+      scooter = double(:scooter, working?: false)
       subject.dock(scooter)
 
       expect { subject.release_scooter }.to raise_error('There are no working scooters available')
@@ -51,7 +50,7 @@ describe DockingStation do
     it { is_expected.to respond_to(:dock).with(1).argument }
 
     it 'docks a scooter and adds it to the scooters array' do
-      scooter = Scooter.new
+      scooter = double :scooter
 
       subject.dock(scooter)
 
@@ -59,9 +58,9 @@ describe DockingStation do
     end
 
     it 'throws an error when docking at a full station' do
-      subject.capacity.times { subject.dock(Scooter.new) }
+      subject.capacity.times { subject.dock double :scooter }
 
-      expect { subject.dock(Scooter.new) }.to raise_error(
+      expect { subject.dock double :scooter }.to raise_error(
         'The docking station is full.'
       )
     end
