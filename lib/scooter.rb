@@ -14,4 +14,9 @@ class Scooter
   def report_broken
     @working = false
   end
+
+  def fix
+    raise 'This scooter is already working.' if working?
+    @working = true
+  end
 end

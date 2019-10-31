@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './scooter'
-
 # DockingStation
 class DockingStation
   DEFAULT_CAPACITY = 20
@@ -19,6 +17,12 @@ class DockingStation
     raise 'There are no working scooters available' if @scooters.none?(&:working?)
 
     @scooters.delete_at(@scooters.index(&:working?))
+  end
+
+  def release_broken
+    broken_scooters = @scooters.reject(&:working?)
+    @scooters.delete_if { |scooter| !scooter.working? }
+    broken_scooters
   end
 
   def dock(scooter)

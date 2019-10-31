@@ -74,4 +74,17 @@ describe DockingStation do
       expect(subject.scooters).to match_array([])
     end
   end
+
+  describe '#report_broken' do
+    it 'releases broken scooters' do
+      scooter = double(:scooter, working?: true)
+      scooter2 = double(:scooter, working?: false)
+
+      subject.dock(scooter)
+      subject.dock(scooter2)
+
+      expect(subject.release_broken).to match_array([scooter2])
+      expect(subject.scooters).to match_array([scooter])
+    end
+  end
 end
