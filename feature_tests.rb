@@ -138,23 +138,23 @@ require './lib/van'
 # ---------
 # Receive and fix scooters in garage
 # ---------
-garage = Garage.new
-van = Van.new
-docking_station = DockingStation.new
-scooter = Scooter.new
+# garage = Garage.new
+# van = Van.new
+# docking_station = DockingStation.new
+# scooter = Scooter.new
 
-scooter.report_broken
-docking_station.dock(scooter)
-loaded_scooters = docking_station.release_broken
-van.load(loaded_scooters)
-van.deliver
-garage.load(loaded_scooters)
-garage.scooters == loaded_scooters
-puts 'garage should now have broken scooters'
-p garage.scooters
-garage.fix_scooters
-puts 'scooter working? should be true:'
-p garage.scooters(&:working?)
+# scooter.report_broken
+# docking_station.dock(scooter)
+# loaded_scooters = docking_station.release_broken
+# van.load(loaded_scooters)
+# van.deliver
+# garage.load(loaded_scooters)
+# garage.scooters == loaded_scooters
+# puts 'garage should now have broken scooters'
+# p garage.scooters
+# garage.fix_scooters
+# puts 'scooter working? should be true:'
+# p garage.scooters(&:working?)
 
 # ---------
 # Collect working scooters
@@ -164,21 +164,21 @@ p garage.scooters(&:working?)
 # van = Van.new
 # scooter = Scooter.new
 # docking_station = DockingStation.new
-
+# scooter.report_broken
 # docking_station.dock(scooter)
 # loaded_scooters = docking_station.release_broken
 # van.load(loaded_scooters)
-# van.deliver
-# garage.load(loaded_scooters)
-# garage.scooters == loaded_scooters
-# scooter.fix
+# delivered_scooters = van.deliver
+# garage.load(delivered_scooters)
+# garage.scooters == delivered_scooters
+# p garage.scooters
+# garage.fix_scooters
+# puts 'scooter should be working?'
 # p scooter.working?
-# garage.release(scooter)
-# van.load(scooter)
-# van.deliver
-# p van.scooters
-# docking_station.dock(scooter)
-# p docking_station
+# fixed = garage.release_scooters
+# van.load(fixed)
+# dropped = van.deliver
+# dropped.each { |s| docking_station.dock(s) }
 
 # # ---------
 # # Distribute to docking stations
