@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
+require 'load_module'
+
 # Van
 class Van
-  attr_reader :scooters
-
-  def initialize
-    @scooters = []
-  end
-
-  def load(scooters)
-    @scooters.concat scooters
-  end
+  include LoadModule
 
   def deliver
     scooters = @scooters

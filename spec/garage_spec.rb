@@ -10,16 +10,6 @@ describe Garage do
     end
   end
 
-  describe '#load' do
-    it { is_expected.to respond_to(:load).with(1).argument }
-
-    it 'adds the broken scooters to the array' do
-      broken_scooters = [double(:scooter)]
-      subject.load(broken_scooters)
-      expect(subject.scooters).to match_array(broken_scooters)
-    end
-  end
-
   describe '#fix_scooters' do
     it { is_expected.to respond_to :fix_scooters }
 
